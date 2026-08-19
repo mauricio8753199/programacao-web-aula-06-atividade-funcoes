@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestão de Notas da Turma</title>
+</head>
+
+<body>
+    <h2>Painel do Professor - Gestão de Alunos</h2>
+    <div>
+        <label>Nome do Aluno: <input type="text" id="iptNome"></label><br><br>
+        <label>Nota 1: <input type="number" id="iptNota1" min="0" max="10" step="0.1"></label>
+        <label>Nota 2: <input type="number" id="iptNota2" min="0" max="10" step="0.1"></label><br><br>
+        <button id="btnCadastrar">Cadastrar
+            Aluno</button>
+    </div>
+    <hr>
+    <div>
+        <h3>Alunos Cadastrados</h3>
+        <label>Filtrar por Situação:
+            <select id="sltFiltro">
+                <option value="todos">Todos</option>
+                <option value="Aprovado">Aprovados</option>
+                <option value="Recuperação">Recuperação</option>
+                <option value="Reprovado">Reprovados</option>
+            </select>
+        </label>
+    </div>
+    <table border="1" style="margin-top: 15px; width:
+100%; text-align: left;">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Média</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody id="tblAlunos">
+        </tbody>
+    </table>
+    <hr>
+    <div>
+        <h3>Métricas da Turma</h3>
+        <p id="txtTotalAlunos">Total de Alunos: 0</p>
+        <p id="txtMediaGeral">Média Geral da Turma: -</p>
+        <p id="txtMaiorMedia">Melhor Desempenho: -</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
