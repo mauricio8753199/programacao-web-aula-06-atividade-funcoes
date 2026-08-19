@@ -44,7 +44,7 @@ const cadastrarAluno = () => {
         document.querySelector('#iptNota2').value = '';
         
         renderizarTabela(String(filtro.value));
-        console.log(turma);
+        atualizarEstatisticas();
     }
 }
 
@@ -69,7 +69,16 @@ const renderizarTabela = (filtro) => {
         tr.appendChild(tdMedia);
         tr.appendChild(tdSituacao);
         tblAlunos.appendChild(tr);
+        atualizarEstatisticas();
     });
+}
+
+const atualizarEstatisticas = () => {
+    const media = (turma.map((a) => a.media).reduce((a,b) => a + b, 0)) / turma.length
+    const maiorMedia = turma.find((a) => a.media).nome;
+    document.querySelector('#txtTotalAlunos').textContent = `Total de Alunos: ${turma.length}`;
+    document.querySelector('#txtMediaGeral').textContent = `Média Geral da Turma: ${media}`;
+    document.querySelector('#txtMaiorMedia').textContent = `Melhor Desempenho: ${maiorMedia}`;
 }
 
 
