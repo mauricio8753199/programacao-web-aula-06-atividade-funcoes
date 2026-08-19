@@ -1,4 +1,7 @@
 const turma = [];
+const btnCadastrar = document.querySelector('#btnCadastrar');
+const filtro = document.querySelector('#sltFiltro');
+const tblAlunos = document.querySelector('#tblAlunos');
 
 const calcularMedia = function(n1,n2){
     return (n1 + n2)/2;
@@ -13,6 +16,7 @@ const definirSituacao = function(media){
         return 'Reprovado'
     }
 }
+
 
 const cadastrarAluno = () => {
     const nome = document.querySelector('#iptNome').value; 
@@ -38,14 +42,16 @@ const cadastrarAluno = () => {
         document.querySelector('#iptNome').value = '';
         document.querySelector('#iptNota1').value = '';
         document.querySelector('#iptNota2').value = '';
-        renderizarTabela();
+        
+        renderizarTabela(String(filtro.value));
+        console.log(turma);
     }
 }
 
-const renderizarTabela = () => {
-    const tblAlunos = document.querySelector('#tblAlunos');
+const renderizarTabela = (filtro) => {
+    console.log(filtro);
     tblAlunos.innerHTML = '';
-    turma.map((aluno) => {
+    turma.filter((value) => filtro !== 'todos' ? value.situacao === filtro : value).map((aluno) => {
         const tr = document.createElement('tr');
         const tdNome = document.createElement('td');
         const tdNota1 = document.createElement('td');
@@ -67,4 +73,5 @@ const renderizarTabela = () => {
 }
 
 
-document.querySelector('#btnCadastrar').addEventListener('click', cadastrarAluno);
+btnCadastrar.addEventListener('click', cadastrarAluno);
+filtro.addEventListener('change', () => renderizarTabela(filtro.value));
